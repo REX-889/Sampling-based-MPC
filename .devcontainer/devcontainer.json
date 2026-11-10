@@ -1,0 +1,20 @@
+{
+  "name": "ZNIMPRA MPPI",
+  "build": { "dockerfile": "../Dockerfile", "context": ".." },
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "remoteUser": "student",
+  "containerEnv": { "DISPLAY": "${localEnv:DISPLAY}" },
+  "mounts": ["source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind"],
+  "runArgs": ["--net=host"],
+  "initializeCommand": "xhost +local: >/dev/null 2>&1 || true",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python3",
+        "python.terminal.executeInFileDir": true
+      }
+    }
+  }
+}
